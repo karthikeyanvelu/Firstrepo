@@ -1,5 +1,5 @@
-a = 1
-b = 2
+a = 10
+b = 20
 print (a+b)
 print("Hello")
 print("Have a Good Day")
