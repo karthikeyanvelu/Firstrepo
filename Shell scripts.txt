@@ -1,0 +1,274 @@
+<------------------------------------ Shell scripting-------------------------------------->
+
+
+#!/usr/bin/bash
+
+echo Hello world
+echo 'This is the first line'; echo 'This is the second line'
+
+# variable declaration ------->
+
+NAME="Tamiltutera"
+echo $NAME # correct
+echo "$NAME" #correct
+echo ${NAME} #correct
+echo '$NAME' # incorrect
+
+#String substitution in variables ---------->
+
+echo ${NAME/Tamil/English}
+
+# substring from a variable ------------->
+
+Length=7
+echo ${NAME:0:Length} # return first 7 characters
+echo ${NAME: -5} # return the last 5 characters
+
+# string length -------------->
+
+echo ${#NAME} # length of a variable 11
+
+# indirect expansion ------------>
+
+NEWNAME="NAME"
+echo ${INEWNAME} # return Tamiltutera
+
+# default value for variable ----------->
+
+echo ${Foo:-"DefaultValueIsEmpty"}
+
+#command substitution -------------->
+
+echo `ls`
+echo `echo \ls\`
+echo $(echo $(ls))
+echo "$(echo "$(ls)")"
+
+DATE="$(date)" ------------->
+
+echo $DATE
+
+# Parameter expansion -------------->
+
+name="tamil tut era"
+echo ${name}
+echo ${name/t/T}
+echo ${name:0:5}
+echo ${name::3}
+echo ${name::-1}
+echo ${name: (-1))
+echo ${name: (-4):-1}
+
+# substitution ------------------>
+
+echo ${name/tamil/english} # replace first match
+echo ${name//tamil/english} # replace all
+
+# string manipulation -------------->
+
+STR="hello WORLD!"
+echo ${STR,} # lowercase 1st letter
+echo ${STR,,} # all lowercase letters
+
+echo ${STR^} #uppercase 1st letter
+echo ${STR^^} # all uppercase letter
+
+#!/usr/bin/bash  -------------------->
+
+string="tamiltutera"
+
+if [[ -z "$string" ]]; then
+    echo "string is empty" 
+elif [[ -n "$string" ]]; then
+      echo "String is not empty" 
+else
+    echo "this never happens"
+fi
+
+#!/usr/bin/bash ---------------->
+
+string1="tamiltutera" 
+string2="tamiltuter"
+
+if [[ $string1 == $string2 ]]; then
+    echo "string is equal" 
+elif [[ $string1 != $string2 ]]; then
+      echo "string is not equal"
+else
+    echo "this is never happens"
+fi
+
+#!/usr/bin/bash ----------------->
+
+NUM1=10
+NUM2=5
+
+if [[ $NUM1 -eq $NUM2 ]]; then
+    echo "numbers are equal"
+elif [[ $NUM1 -ne SNUM2 ]]; then 
+      echo "numbers are not equal"
+else
+    echo "this never happens"
+fi
+
+
+if [[ $NUM1 -lt $NUM2 ]]; then
+    echo "$NUM1 is less than $NUM2"
+elif [[ $NUM1 -gt $NUM2 ]]; then 
+      echo "$NUM1 is greater than $NUM2"
+elif [[ $NUM1 -ge $NUM2 ]]; then
+      echo "$NUM1 is greater than or equal to $NUM2"
+elif [[ $NUM1 -le $NUM2 ]]; then
+      echo "$NUM1 is less than or equal to $NUM2" 
+else
+    echo "this never happens" 
+fi
+
+#!/usr/bin/bash ------------>
+
+if [[ -e "output.txt" ]]; then 
+    echo "File exists"
+else
+    echo "File not exists"
+fi
+
+#!/usr/bin/bash ------------->
+
+if [[ -r "output.txt" ]]; then 
+    echo "file is readable"
+else
+    echo "file is not readable"
+fi
+
+#!/usr/bin/bash --------------->
+
+FILE1="output1.txt"
+FILE2="output2.txt"
+
+if [[ $FILE1 -nt $FILE2 ]]; then 
+    echo "$FILE1 is recent than $FILE2"
+elif [[ $FILE1 -ot $FILE2 ]]; then 
+      echo "$FILE2 is more recent than $FILE1"
+else
+    echo "this never happens"
+fi
+
+#!/usr/bin/bash ---------------->
+
+if cmp -s -- "output1.txt" "output2.txt"; then 
+     echo "output1.txt and output2.txt have identical contents"
+else
+    echo "both are different"
+fi
+
+#!/usr/bin/bash -------------->
+
+fruits=('apple' 'banana' 'orange' 'violet' 'black' 'white')
+   echo ${fruits[@]} # display all elements in the array
+   echo ${fruits[0]) # element of 8
+   echo ${fruits [1]} # element of 1
+   echo ${fruits[-1]) # last element
+
+   echo ${#fruits[@]} # number of elements in the array
+   echo ${fruits[@]:3:2} # range from position and length
+   echo ${#fruits [3]} # string length of nth element
+   echo ${! fruits[@]}
+
+#!/usr/bin/bash -------------->
+
+Fruits=('apple' 'banana' 'orange' 'violet' 'white')
+ echo ${Fruits[@]}
+
+# array push -------->
+
+Fruits=("${Fruits[@]}" "watermelon")
+echo ${Fruits[@]}
+Fruits+=('grapes' )
+echo ${Fruits[@]}
+
+# array remove --------->
+
+unset Fruits[2] 
+echo ${Fruits[@]}
+
+Fruits ($(Fruits[@]/app*/})
+echo ${Fruits[@]}
+
+# duplicate array -------->
+
+Fruits=("${Fruits[@]}")
+Veggies=('potato' 'brinjal')
+
+#array concatenate --------->
+
+vegetables=("${Fruits[@]}" "${Veggies[@]}")
+echo ${vegetables[@]}
+
+#!/usr/bin/bash ------------------>
+
+Fruits=('apple' 'banana' 'orange' 'violet' 'white')
+ echo ${Fruits[@]}
+
+for i in "${Fruits[@]}";
+do
+   echo $i
+done
+ 
+#!/usr/bin/bash ------------------>
+
+declare -A cars
+
+cars[ford]=aspire
+cars[TATA]=altros
+cars[maruthi]=dzire
+cars[kia]=sonet
+
+for val in "${cars[@]}"; do 
+    echo "values": $val
+done
+
+for key in "${!cars[@]}"; do
+    echo "key": $key I
+done
+
+#!/usr/bin/bash ------------------>
+
+echo "Enter your name"
+read name
+echo "hello $name!"
+
+#!/usr/bin/bash --------------->
+
+echo "Total arguments: $#"
+echo "1st argument: $1" 
+echo "2nd argument: $2"
+echo "3rd argument: $3"
+echo "4th argument: $4"
+echo "5th argument: $5"
+echo "6th argument: $6"
+echo "7th argument: $7"
+echo "8th argument: $8"
+echo "9th argument: $9"
+echo "10 argument: ${10}"
+
+#!/usr/bin/bash ---------------->
+
+file="output.txt"
+while read line; do
+echo $line
+done < $file
+n=1
+while read line; do
+
+#reading each line
+
+echo "Line no. $n: $line
+n=$((n+1))
+done < $file
+
+#!/usr/bin/bash -------------->
+
+echo "Enter filename to delete: "
+read file
+rm -f $file
+
